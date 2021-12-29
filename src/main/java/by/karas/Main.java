@@ -7,6 +7,6 @@ public class Main {
         double w = 30;
         double pr2 = 30.5;
         double result = d * pr1 + w * pr2;
-        System.out.println("Result = " + result); // new
+        System.out.println("Result = " + result); // new  comment
     }
 }
