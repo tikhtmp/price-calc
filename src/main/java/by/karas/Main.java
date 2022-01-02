@@ -20,9 +20,10 @@ public class Main {
         FileReader distancePriceFileReader = new CSVFileReader();
         Map<Integer, BigDecimal> distancePriceMap = distancePriceFileReader.readData("price_distance.csv");
         Map<Integer, BigDecimal> weightPriceMap = distancePriceFileReader.readData("price_weight.csv");
+
         PriceSelector priceSelector = new PriceSelector();
 
-        Double[] enteredValues = new Double[2];
+        BigDecimal[] enteredValues = new BigDecimal[2];
         Scanner scanner = new Scanner(System.in);
         String inputValue;
         int i = 0;
@@ -39,17 +40,19 @@ public class Main {
             if (inputValue.equalsIgnoreCase("q")) {
                 break;
             } else if(isCorrectDoubleValue(inputValue)){
-                enteredValues[i] = Double.parseDouble(inputValue);
+                enteredValues[i] = new BigDecimal(inputValue);
                 i++;
             } else {
                 System.out.println("Incorrect value: " + inputValue);
             }
 
-            BigDecimal price = priceSelector.selectPriceValue(distancePriceMap, new BigInteger(enteredValues[0].toString()));
-            System.out.println("Price: " + price);
 
             if (i == 2) {
-                Double result = enteredValues[0] *  price.doubleValue() + enteredValues[2] * enteredValues[3];
+                BigDecimal distancePrice = priceSelector.selectPriceValue(distancePriceMap, new BigInteger(enteredValues[0].toString()));
+                System.out.println("distancePrice: " + distancePrice);
+                BigDecimal weightPrice = priceSelector.selectPriceValue(weightPriceMap, new BigInteger(enteredValues[1].toString()));
+                System.out.println("weightPrice: " + weightPrice);
+                BigDecimal result = enteredValues[0].multiply(distancePrice).add(enteredValues[1].multiply(weightPrice));
                 System.out.println("Result = " + result);
             }
 

@@ -18,16 +18,18 @@ public class CSVFileReader implements FileReader{
     public Map<Integer, BigDecimal> readData(String filePath) throws IOException {
         Map<Integer, BigDecimal> resultMap = new TreeMap<>();
         InputStream inputStream = getClass().getResourceAsStream("/" + filePath);
-        try (InputStreamReader inputStreamReader = new InputStreamReader(inputStream);){
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        try (InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);){
+
             String line;
             String[] values;
 
             while ((line = bufferedReader.readLine()) != null){
                 values = line.split(",");
                 resultMap.put(Integer.valueOf(values[0]), new BigDecimal(values[1]));
-
             }
+
+
         }
         return resultMap;
     }
