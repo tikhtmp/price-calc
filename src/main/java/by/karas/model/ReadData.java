@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class ReadData implements Status {
+
     @Override
     public Status handle(Scanner scanner) {
 

@@ -1,16 +1,11 @@
 package by.karas;
 
-import by.karas.files.CSVFileReader;
-import by.karas.files.FileReader;
 import by.karas.model.ReadData;
 import by.karas.model.Status;
 import by.karas.model.StatusType;
 import by.karas.selector.PriceSelector;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
