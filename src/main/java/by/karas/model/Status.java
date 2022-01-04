@@ -13,7 +13,7 @@ public interface Status {
 
     List<BigDecimal> userData = new ArrayList<>();
 
-    Status handle(Scanner scanner);
+    Status handle();
 
     StatusType getType();
 }
